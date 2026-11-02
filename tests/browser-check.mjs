@@ -20,7 +20,7 @@ async function evaluate(expression) {
 await cdp('Runtime.enable');
 await cdp('Page.enable');
 await evaluate(`new Promise(resolve => { if (document.readyState === 'complete') resolve(); else window.addEventListener('load', resolve, {once:true}); })`);
-assert.equal(await evaluate('document.title'), '이음로컬 — 순천, 이야기를 걷다');
+assert.equal(await evaluate('document.title'), '남도루트 — 순천, 이야기를 걷다');
 assert(await evaluate('[...document.images].every(img => img.complete && img.naturalWidth > 0)'), 'Images must load');
 assert(await evaluate(`[...document.querySelectorAll('a[href^="#"]')].every(a => a.hash === '' || document.querySelector(a.hash))`), 'All anchor links must resolve');
 for (const width of [320,390,768,1440]) {
